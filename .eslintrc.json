@@ -1,3 +1,46 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:storybook/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  },
+  "rules": {
+    "no-underscore-dangle": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js",
+          "**/*.spec.js",
+          "**/*.test.ts",
+          "**/*.spec.ts",
+          "tests/**/*",
+          "test/**/*",
+          "**/lib/firebase.ts", // Add the path to your firebase.ts file
+          "**/components/Firebase/BookDoctorAuth.tsx" // Add the path to your BookDoctorAuth.tsx file
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/components/Firebase/BookDoctorAuth.tsx",
+        "**/lib/firebase.ts"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }
